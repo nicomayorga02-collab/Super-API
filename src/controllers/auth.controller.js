@@ -6,8 +6,12 @@ export const login = (request, response) => {
     if (!email || !password) {
         return response.status(400).json({ error: 'Email and password are required' });
     }
+    const result = User.findOne({ where: { email, password } });
+    if (!result) {
+        return response.status(401).json({ error: 'Usuario no encontrado' });
+    }
     response.status(200).json({
-        message: 'Login successful', email });
-        data: { email, password } 
-    };
-    
+        message: 'Login successful',
+        data: { email, password }
+    });
+}
