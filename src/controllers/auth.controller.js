@@ -1,4 +1,6 @@
+import { User } from '../models/index.js';
 export const login = (request, response) => {
+    console.log(request.body);
     const { email, password } = request.body;
     // Aquí puedes agregar la lógica de autenticación, como verificar el correo electrónico y la contraseña en tu base de datos.
     if (!email || !password) {
